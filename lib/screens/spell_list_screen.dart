@@ -2,6 +2,8 @@ import 'package:dnd/blocs/spells/spell_events.dart';
 import 'package:dnd/blocs/spells/spell_list_bloc.dart';
 import 'package:dnd/blocs/spells/spell_states.dart';
 import 'package:dnd/models/SpellList.dart';
+import 'package:dnd/widgets/empty.dart';
+import 'package:dnd/widgets/error.dart';
 import 'package:dnd/widgets/loading.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +32,7 @@ class SpellListScreenPage extends StatelessWidget {
           } else if (state is SpellListEmptyState) {
             return _showEmpty(context, state.list);
           } else {
-            return _showError();
+            return GenericErrorWidget();
           }
         },
       );
@@ -39,9 +41,7 @@ class SpellListScreenPage extends StatelessWidget {
         child: _buildSpells(context, list),
       );
 
-  Widget _showEmpty(BuildContext context, SpellList list) => Container();
-
-  Widget _showError() => Container();
+  Widget _showEmpty(BuildContext context, SpellList list) => GenericEmptyStateWidget();
 
   Widget _buildSpells(BuildContext context, SpellList list) {
     List<Spell> _results = list.results;
