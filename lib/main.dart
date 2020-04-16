@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           create: (context) => BottomNavigationBloc(),
         ),
         BlocProvider(
-          create: (context) => SpellListBloc(
+          create: (context) => PreviewListBloc(
               new DefaultPreviewListRepository(
                   new DefaultWebService()
               )

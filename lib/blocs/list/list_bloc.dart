@@ -4,10 +4,10 @@ import 'package:dnd/models/preview_list.dart';
 import 'package:dnd/repository/preview_list_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SpellListBloc extends Bloc<PreviewListEvent, PreviewListState> {
+class PreviewListBloc extends Bloc<PreviewListEvent, PreviewListState> {
   PreviewListRepository repository;
 
-  SpellListBloc(this.repository);
+  PreviewListBloc(this.repository);
 
   @override
   get initialState => ListLoadingState();

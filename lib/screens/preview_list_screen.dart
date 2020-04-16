@@ -30,16 +30,16 @@ class PreviewListScreenPage extends StatelessWidget {
   }
 
   Widget build(BuildContext context) {
-    final SpellListBloc bloc = BlocProvider.of<SpellListBloc>(context);
+    final PreviewListBloc bloc = BlocProvider.of<PreviewListBloc>(context);
     bloc.add(_mapConfigToEvent());
 
     return Scaffold(
-      body: _spells(bloc),
+      body: _content(bloc),
     );
   }
 
-  Widget _spells(SpellListBloc bloc) =>
-      BlocBuilder<SpellListBloc, PreviewListState>(
+  Widget _content(PreviewListBloc bloc) =>
+      BlocBuilder<PreviewListBloc, PreviewListState>(
         builder: (BuildContext context, PreviewListState state) {
           if (state is ListLoadingState) {
             return LoadingWidget();
@@ -63,6 +63,7 @@ class PreviewListScreenPage extends StatelessWidget {
     List<Preview> _results = list.results;
     return ListView.builder(
       padding: const EdgeInsets.all(16.0),
+      itemCount: list.count,
       itemBuilder: (context, i) {
         return _buildRow(_results[i]);
       },
