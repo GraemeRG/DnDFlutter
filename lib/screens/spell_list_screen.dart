@@ -1,7 +1,7 @@
 import 'package:dnd/blocs/spells/spell_events.dart';
 import 'package:dnd/blocs/spells/spell_list_bloc.dart';
 import 'package:dnd/blocs/spells/spell_states.dart';
-import 'package:dnd/models/SpellList.dart';
+import 'package:dnd/models/spell_list.dart';
 import 'package:dnd/widgets/empty.dart';
 import 'package:dnd/widgets/error.dart';
 import 'package:dnd/widgets/loading.dart';
@@ -17,7 +17,6 @@ class SpellListScreenPage extends StatelessWidget {
     bloc.add(SpellListEvent.FetchSpellList);
 
     return Scaffold(
-      appBar: AppBar(title: Text("Spells")),
       body: _spells(bloc),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:dnd/blocs/navigation/navigation_bloc.dart';
 import 'package:dnd/blocs/navigation/navigation_events.dart';
 import 'package:dnd/blocs/navigation/navigation_states.dart';
+import 'package:dnd/screens/race_list_screen.dart';
 import 'package:dnd/screens/spell_list_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -33,9 +34,9 @@ class _BottomNavigationPageState extends State<BottomNavigationPage> {
         } else if (state is DisplayClassListState) {
           return _showBasicData('Classes');
         } else if (state is DisplayRaceListState) {
-          return _showBasicData('Races');
+          return RaceListScreenPage();
         } else {
-          return _showBasicData('Spells');
+          return SpellListScreenPage();
         }
       });
 

@@ -1,0 +1,3 @@
+enum RaceListEvent {
+  FetchRaceList
+}
