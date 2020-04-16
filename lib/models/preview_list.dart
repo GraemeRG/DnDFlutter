@@ -1,22 +1,31 @@
 import 'package:equatable/equatable.dart';
 
 // ignore: must_be_immutable
-class ClassList extends Equatable {
+class PreviewList extends Equatable {
   int count;
-  List<Class> results;
+  List<Preview> results;
+
+  PreviewList.fromJson(Map<String, dynamic> json) {
+    count = json['count'];
+    if(json['results'] != null) {
+      results = new List<Preview>();
+      json['results'].forEach((v) {
+        results.add(new Preview.fromJson(v));
+      });
+    }
+  }
 
   @override
   List<Object> get props => [count, results];
-
 }
 
 // ignore: must_be_immutable
-class Class extends Equatable {
+class Preview extends Equatable {
   String index;
   String name;
   String url;
 
-  Class.fromJson(Map<String, dynamic> json) {
+  Preview.fromJson(Map<String, dynamic> json) {
     index = json['index'];
     name = json['name'];
     url = json['url'];

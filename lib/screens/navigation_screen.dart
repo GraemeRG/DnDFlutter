@@ -1,8 +1,7 @@
 import 'package:dnd/blocs/navigation/navigation_bloc.dart';
 import 'package:dnd/blocs/navigation/navigation_events.dart';
 import 'package:dnd/blocs/navigation/navigation_states.dart';
-import 'package:dnd/screens/race_list_screen.dart';
-import 'package:dnd/screens/spell_list_screen.dart';
+import 'package:dnd/screens/preview_list_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,13 +29,13 @@ class _BottomNavigationPageState extends State<BottomNavigationPage> {
       BlocBuilder<BottomNavigationBloc, BottomNavigationState>(
           builder: (BuildContext context, BottomNavigationState state) {
         if (state is DisplaySpellListState) {
-          return SpellListScreenPage();
+          return PreviewListScreenPage('Spells');
         } else if (state is DisplayClassListState) {
-          return _showBasicData('Classes');
+          return PreviewListScreenPage('Classes');
         } else if (state is DisplayRaceListState) {
-          return RaceListScreenPage();
+          return PreviewListScreenPage('Races');
         } else {
-          return SpellListScreenPage();
+          return PreviewListScreenPage('Spells');
         }
       });
 
@@ -59,12 +58,6 @@ class _BottomNavigationPageState extends State<BottomNavigationPage> {
           ],
         );
       });
-
-  Widget _showBasicData(String text) => Container(
-        child: Center(
-          child: Text(text),
-        ),
-      );
 
   int _getCurrentIndex(BottomNavigationState state) {
     if (state is DisplaySpellListState) {
