@@ -1,9 +1,6 @@
-import 'package:dnd/api/web_service.dart';
 import 'package:dnd/blocs/navigation/navigation_bloc.dart';
 import 'package:dnd/blocs/navigation/navigation_events.dart';
 import 'package:dnd/blocs/navigation/navigation_states.dart';
-import 'package:dnd/blocs/spells/spell_list_bloc.dart';
-import 'package:dnd/repository/spell_list_repository.dart';
 import 'package:dnd/screens/spell_list_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -32,13 +29,13 @@ class _BottomNavigationPageState extends State<BottomNavigationPage> {
       BlocBuilder<BottomNavigationBloc, BottomNavigationState>(
           builder: (BuildContext context, BottomNavigationState state) {
         if (state is DisplaySpellListState) {
-          return _getSpellListProvider();
+          return SpellListScreenPage();
         } else if (state is DisplayClassListState) {
-          return _showData('Classes');
+          return _showBasicData('Classes');
         } else if (state is DisplayRaceListState) {
-          return _showData('Races');
+          return _showBasicData('Races');
         } else {
-          return _showData('Spells');
+          return _showBasicData('Spells');
         }
       });
 
@@ -62,13 +59,7 @@ class _BottomNavigationPageState extends State<BottomNavigationPage> {
         );
       });
 
-  BlocProvider _getSpellListProvider() => BlocProvider(
-        create: (context) => SpellListBloc(
-            new DefaultSpellListRepository(new DefaultWebService())),
-        child: SpellListScreenPage(),
-      );
-
-  Widget _showData(String text) => Container(
+  Widget _showBasicData(String text) => Container(
         child: Center(
           child: Text(text),
         ),
